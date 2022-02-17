@@ -5,6 +5,7 @@ import { useState } from 'react';
 import regeneratorRuntime from "regenerator-runtime";
 import UserProfile from './UserProfile';
 import { db } from "../Util/Firebase";
+import '../assets/css/uikit.css'
 import {
   collection,
   getDocs,
@@ -20,11 +21,11 @@ function Mainpage() {
   const [Task, setTask] = useState('');
   const [Status, setStatus] = useState('');
   const [UserData, setUserData] = useState([]);
-  const Username =  Object.entries(location.state.detail)[3][1]
+  const Username = Object.entries(location.state.detail)[3][1]
   const usersCollectionRef = collection(db, Username);
 
   const createTask = async () => {
-    await addDoc(usersCollectionRef,  { Task: Task, Status: Status }),getUsers();
+    await addDoc(usersCollectionRef, { Task: Task, Status: Status }), getUsers();
   };
 
 
@@ -67,9 +68,12 @@ function Mainpage() {
       {UserData.map((user) => {
         return (
           <div>
-            <h1>Task: {user.Task}</h1>
-            <h1>Status: {user.Status}</h1>
-          </div> 
+            <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-align-right">
+              <div class="uk-card-badge uk-label">{user.Status}</div>
+              <h3 class="uk-card-title">Task</h3>
+              <p>{user.Task}</p>
+            </div>
+          </div>
         );
       })}
     </div>

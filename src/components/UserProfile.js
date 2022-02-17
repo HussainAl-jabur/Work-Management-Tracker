@@ -5,10 +5,22 @@ function UserProfile(props) {
     console.log(data);
     return(
         <div className="User">
-            <img src={data[1][1]}></img>
-            <h1>Username : {data[3][1]}</h1>
-            <h1>Email : {data[2][1]}</h1>
+<div class="uk-card uk-card-default uk-width-1-2@m">
+    <div class="uk-card-header">
+        <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-auto">
+                <img class="uk-border-circle" width="40" height="40" src={data[1][1]}></img>
+            </div>
+            <div class="uk-width-expand">
+                <h3 class="uk-card-title uk-margin-remove-bottom">{data[3][1]}</h3>
+                <p class="uk-text-meta uk-margin-remove-top">{data[2][1]} </p>
+            </div>
         </div>
+    </div>
+</div>
+</div>
+
+
     );
 }
 
